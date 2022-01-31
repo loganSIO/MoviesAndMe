@@ -7,6 +7,8 @@ import Favorites from "../Components/Favorites"
 
 
 const SearchStackNavigator = createStackNavigator({
+  // le nom Search dans le StackNavigator n'est pas forcément identique au nom du composant
+  Search: {
     screen: Search,
     navigationOptions: {
       title: "Rechercher un film",
@@ -20,19 +22,6 @@ const SearchStackNavigator = createStackNavigator({
   },
 })
 
-/*const MoviesTabNavigator = createBottomTabNavigator({
-  Search: {
-    screen: SearchStackNavigator,
-    navigationOptions: {
-      tabBarLabel: "🔍",
-    },
-  },
-  Favorites: {
-    screen: Favorites,
-    navigationOptions: {
-      tabBarLabel: "♥",
-    },
-  },
-})*/
+
 
 export default createAppContainer(SearchStackNavigator)

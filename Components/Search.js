@@ -53,21 +53,27 @@ class Search extends React.Component {
     this.props.navigation.navigate("FilmDetail", { idFilm: idFilm })
   }
 
+//, ()=>console.log('erreurAppelApI'); alert('erreur');)
 
   _loadFilms() {
     if (this.searchedText.length > 0 && !this.isLoading) {
 
-    getFilmsFromApiWithSearchedText(this.searchedText, this.page + 1).then(data => {
-      this.page = data.page
-      this.totalPages = data.total_pages
-      // appel de setSate, actualistion automatique de la Flatlist
-      this.setState({
-        films: this.state.films.concat(data.results),
-        isLoading: false
-       });
-    });
-}
-}
+      getFilmsFromApiWithSearchedText(this.searchedText, this.page + 1).then(
+        data => {
+          this.page = data.page
+          this.totalPages = data.total_pages
+          // appel de setSate, actualistion automatique de la Flatlist
+          this.setState({
+            films: this.state.films.concat(data.results),
+            isLoading: false
+          })
+        }
+        ,err=>{alert(JSON.stringify(err, undefined, true))}
+      );
+    }
+  }
+
+
   render() {
 
     return (
